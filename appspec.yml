@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html
+hooks:
+  ApplicationStart:
+    - location: uploadDir/postScript.sh
+      timeout: 300
+      runas: root
