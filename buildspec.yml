@@ -9,7 +9,7 @@ phases:
     commands:
       - echo "Building application..."
       - sudo mkdir -p /var/www/html  # Create target directory if missing
-      - cp -R * /var/www/html/       # Copy files to deployment location
+      - cd /var/www/html       # Copy files to deployment location
   post_build:
     commands:
       - echo "Deployment successful!"
