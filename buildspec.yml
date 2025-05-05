@@ -8,13 +8,15 @@ phases:
       - sudo apt-get install nginx -y
   build:
     commands:
-      - echo Build started on 'date'
-      - cp index.html /var/www/html/
+      - echo Build started on $(date)
+      - sudo mkdir -p /var/www/html  # Ensure the directory exists
+      - sudo cp -R HTML/index.html /var/www/html/  # Copy index.html from HTML folder
   post_build:
     commands:
       - echo Configuring NGINX
+      - sudo systemctl restart nginx  # Restart NGINX to apply changes
 
 artifacts:
   files:
-    - /var/www/html/index.html
- 
+    - '**/*'  # Ensure all files are available for deployment
+  discard-paths: no
